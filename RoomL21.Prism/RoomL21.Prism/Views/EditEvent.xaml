@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="RoomL21.Prism.Views.EditEvent"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             Title="{Binding Title}">
+
+    <StackLayout
+        Padding="10">
+        <ScrollView>
+            <AbsoluteLayout>
+                <StackLayout
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="0"
+                	        Text="Name"
+                            TextColor="{StaticResource colorAccent}"
+                	        VerticalOptions="Center"/>
+                        <Entry
+                	        Grid.Column="1"
+                	        Grid.Row="0"
+                	        Placeholder="Enter the event's name..."
+                	        Text="{Binding Event.Name}"/>
+
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="2"
+                	        Text="Event type"
+                            TextColor="{StaticResource colorAccent}"
+                	        VerticalOptions="Center"/>
+                        <Picker
+                	        Grid.Column="1"
+                	        Grid.Row="2"
+                	        ItemDisplayBinding="{Binding Name}"
+                	        ItemsSource="{Binding EventTypes}"
+                	        SelectedItem="{Binding EventType}"
+                	        Title="Select a event type..."/>
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="1"
+                	        Text="Guests number"
+                            TextColor="{StaticResource colorAccent}"
+                	        VerticalOptions="Center"/>
+                        <Picker
+                	        Grid.Column="1"
+                	        Grid.Row="1"
+                	        ItemDisplayBinding="{Binding Range}"
+                	        ItemsSource="{Binding InvitedNumbers}"
+                	        SelectedItem="{Binding InvitedNumber}"
+                	        Title="Select a range of guests..."/>
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="3"
+                	        Text="Event Date"
+                            TextColor="{StaticResource colorAccent}"
+                	        VerticalOptions="Center"/>
+                        <DatePicker
+                	        Grid.Column="1"
+                	        Grid.Row="3"
+                	        Date="{Binding Event.Date}"/>
+
+                        <Label
+                	        Grid.Column="0"
+                	        Grid.Row="4"
+                	        Text="Remarks"
+                            TextColor="{StaticResource colorAccent}"
+                	        VerticalOptions="Center"/>
+                        <Editor
+                	        Grid.Column="1"
+                	        Grid.Row="4"
+                	        HeightRequest="80"
+                            Placeholder="Enter here your remarks"
+                	        Text="{Binding Event.Remarks}"/>
+                    </Grid>
+
+                </StackLayout>
+
+                <busyindicator:SfBusyIndicator  
+                AnimationType="DoubleCircle"
+                AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource colorDanger}"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource colorFontInverse}"
+                IsVisible="{Binding IsRunning}"
+                Title="Loading..."
+                VerticalOptions="Center"
+                ViewBoxWidth="80"
+                ViewBoxHeight="80" />
+
+            </AbsoluteLayout>
+        </ScrollView>
+        <StackLayout
+                Orientation="Vertical"
+                VerticalOptions="EndAndExpand">
+            <Button
+                IsEnabled="{Binding IsEnabled}"
+                Command="{Binding SaveCommand}"
+                Text="{Binding SaveText}"/>
+        </StackLayout>
+    </StackLayout>
+  
+</ContentPage>

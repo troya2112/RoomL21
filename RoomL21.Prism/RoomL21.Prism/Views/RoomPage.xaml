@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="RoomL21.Prism.Views.RoomPage"
+             Title="{Binding Title}">
+    <StackLayout
+        Padding="10">
+        <AbsoluteLayout>
+            <ScrollView>
+                <StackLayout>
+                    <ffimageloading:CachedImage
+                    Aspect="AspectFit"
+                    Source="{Binding Room.ImageUrl}"
+                    LoadingPlaceholder= "LoaderImage"
+                    ErrorPlaceholder= "ErrorImage"
+                    CacheDuration= "50"
+                    RetryCount= "3"
+                    RetryDelay= "600"
+                    DownsampleToViewSize = "true"
+                    HeightRequest="300"
+                    WidthRequest="300"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Room's Owner Name"/>
+                        <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Room.Owner}"/>
+                        <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Capacity"/>
+                        <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Room.Capacity}"/>
+                        <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Address"/>
+                        <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Room.Address}"/>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+            <busyindicator:SfBusyIndicator  
+                AnimationType="DoubleCircle"
+                AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource colorDanger}"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource colorFontInverse}"
+                IsVisible="{Binding IsRunning}"
+                Title="Loading..."
+                VerticalOptions="Center"
+                ViewBoxWidth="80"
+                ViewBoxHeight="80" />
+        </AbsoluteLayout>
+        <Button
+            Command="{Binding SelectRoomCommand}"
+            Text="Select Room"
+            IsEnabled="{Binding IsEnabled}"
+            VerticalOptions="EndAndExpand"/>
+    </StackLayout>
+  
+</ContentPage>

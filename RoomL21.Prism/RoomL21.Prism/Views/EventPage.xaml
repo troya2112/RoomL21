@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="RoomL21.Prism.Views.EventPage"
+             IconImageSource="ic_event_note_white"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             Title="{Binding Title}">
+
+    <StackLayout
+        Padding="10">
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Name"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Event.Name}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Event Type"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Event.EventType}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Date"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Event.Date, StringFormat='{0:yyyy/MM/dd}'}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Max Guests Number"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Event.InvitedsNumber}"/>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="Remarks"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        TextColor="{StaticResource colorFontInverse}"
+                        Text="{Binding Event.Remarks}"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout
+            Orientation="Vertical"
+            VerticalOptions="EndAndExpand">
+            <Button
+                Command="{Binding EditEventCommand}"
+                Text="Edit Event"
+                IsVisible="{Binding IsVisible}"
+                VerticalOptions="EndAndExpand"/>
+            <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <Button
+                IsEnabled="{Binding IsEnabled}"
+                Command="{Binding SelectRoomCommand}"
+                IsVisible="{Binding IsVisible}"
+                BackgroundColor="{StaticResource colorSecondary}"
+                Text="Search for a room"/>
+                <Button
+                IsEnabled="{Binding IsEnabled}"
+                Command="{Binding AddInvitedsCommand}"
+                IsVisible="{Binding IsVisible}"
+                BackgroundColor="{StaticResource colorSecondary}"
+                Text="Add guests"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+  
+</ContentPage>

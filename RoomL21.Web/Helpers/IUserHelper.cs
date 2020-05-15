@@ -23,6 +23,6 @@ namespace RoomL21.Web.Helpers
         Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
         Task<IdentityResult> ConfirmEmailAsync(User user, string token);
         Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword);
-        Task LoginAsync(LoginViewModel model);
+     
     }
 }

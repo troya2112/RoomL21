@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using RoomL21.Common.Services;
 using RoomL21.Prism.ViewModels;
 using RoomL21.Prism.Views;
 using Xamarin.Forms;
@@ -21,15 +22,32 @@ namespace RoomL21.Prism
 
         protected override async void OnInitialized()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjM4MzI4QDMxMzgyZTMxMmUzMFJFWkRzdVZydG5WcVZjeUdoaUJjZi81a0xvb3VXTCsvTTVPOEkyQ2JxNnM9");
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<L21MasterDetailPage, L21MasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddInvitedsPage, AddInvitedsPageViewModel>();
+            containerRegistry.RegisterForNavigation<AgendaPage, AgendaPageViewModel>();
+            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
+            containerRegistry.RegisterForNavigation<EditEvent, EditEventViewModel>();
+            containerRegistry.RegisterForNavigation<EventPage, EventPageViewModel>();
+            containerRegistry.RegisterForNavigation<EventsPage, EventsPageViewModel>();
+            containerRegistry.RegisterForNavigation<EventTabbedPage, EventTabbedPageViewModel>();
+            containerRegistry.RegisterForNavigation<InvitedsPage, InvitedsPageViewModel>();
+            containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
+            containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
+            containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
+            containerRegistry.RegisterForNavigation<RoomPage, RoomPageViewModel>();
+            containerRegistry.RegisterForNavigation<RoomsPage, RoomsPageViewModel>();
         }
     }
 }

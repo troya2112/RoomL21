@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="RoomL21.Prism.Views.AddInvitedsPage"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <AbsoluteLayout>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="CenterAndExpand"
+                        FontAttributes="Bold"
+                        FontSize="Title"
+                        Text="{Binding Title}"/>
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        HeightRequest="50"
+                        Source="ic_person"
+                        WidthRequest="50"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Document"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Placeholder="Enter the Invited's document..."
+                        Text="{Binding Document}"/>
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="FirstName"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Placeholder="Enter the Invited's firstname..."
+                        Text="{Binding FirstName}"/>
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="LastName"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Placeholder="Enter the Invited's last name..."
+                        Text="{Binding LastName}"/>
+
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Address"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Placeholder="Enter the Invited's address..."
+                        Text="{Binding Address}"/>
+
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Text="Email"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Placeholder="Enter the Invited's email ..."
+                        Text="{Binding Email}"/>
+
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Text="Phone number"
+                        TextColor="{StaticResource colorAccent}"
+                        VerticalOptions="Center"/>
+                    <Entry
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Keyboard="Telephone"
+                        Placeholder="Enter the Invited's phonenumber..."
+                        Text="{Binding Phone}"/>
+                </Grid>
+                <StackLayout
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                    <Button
+                Command="{Binding RegisterCommand}"
+                IsEnabled="{Binding IsEnabled}"
+                Text="Add guest"
+                VerticalOptions="EndAndExpand"/>
+                    <Button
+                Command="{Binding BackToEventsCommand}"
+                BackgroundColor="{StaticResource colorSecondary}"
+                Text="Back to Events List"/>
+                </StackLayout>
+            </StackLayout>
+            <busyindicator:SfBusyIndicator  
+                AnimationType="DoubleCircle"
+                AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource colorDanger}"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource colorFontInverse}"
+                IsVisible="{Binding IsRunning}"
+                Title="Loading..."
+                VerticalOptions="Center"
+                ViewBoxWidth="80"
+                ViewBoxHeight="80" />
+        </AbsoluteLayout>
+    </ScrollView>
+</ContentPage>

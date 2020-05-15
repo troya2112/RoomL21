@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="RoomL21.Prism.Views.LoginPage"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             Title="{Binding Title}">
+    <ScrollView>
+        <AbsoluteLayout>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="10">
+
+                <Image
+                    HeightRequest="180"
+                    Source="logo"/>
+                <Label
+                	        Grid.Column="0"
+                	        Grid.Row="2"
+                	        Text="User type"
+                	        VerticalOptions="Center"/>
+                <Picker
+                	        Grid.Column="1"
+                	        Grid.Row="2"
+                	        ItemDisplayBinding="{Binding Text}"
+                	        ItemsSource="{Binding UserTypes}"
+                	        SelectedItem="{Binding UserType}"
+                	        Title="Select your user role..."/>
+                <Label
+                    Text="Email"/>
+                <Entry
+                    Keyboard="Email"
+                    Placeholder="Enter your email..."
+                    Text="{Binding Email}"/>
+                <Label
+                    Text="Password"/>
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Enter your password..."
+                    Text="{Binding Password}"/>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Label
+                        Text="Remember me in this device"
+                        VerticalOptions="Center"
+                        TextColor="{StaticResource colorFontInverse}"/>
+                    <CheckBox
+                        IsChecked="{Binding IsRemember}"/>
+                </StackLayout>
+
+                <StackLayout
+                    Orientation="Vertical"
+                    VerticalOptions="EndAndExpand">
+                    <Button
+                        IsEnabled="{Binding IsEnabled}"
+                        Command="{Binding LoginCommand}"
+                        Text="Login"/>
+                    <Label
+                    HorizontalOptions="Center"
+                    Text="Create a new user"
+                    TextColor="{StaticResource colorAccent}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label
+                    HorizontalOptions="Center"
+                    Text="Forgot your password?"
+                    TextColor="{StaticResource colorAccent}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <busyindicator:SfBusyIndicator  
+                AnimationType="DoubleCircle"
+                AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource colorDanger}"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource colorFontInverse}"
+                IsVisible="{Binding IsRunning}"
+                Title="Loading..."
+                VerticalOptions="Center"
+                ViewBoxWidth="80"
+                ViewBoxHeight="80" />
+        </AbsoluteLayout>
+    </ScrollView>
+</ContentPage>
