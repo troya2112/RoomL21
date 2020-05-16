@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="RoomL21.Prism.Views.EventPage"
-             IconImageSource="ic_event_note_white"
+             IconImageSource="ic_event_note_white" 
              BackgroundColor="{StaticResource colorBackgroud}"
              Title="{Binding Title}">
 
