@@ -1,16 +1,12 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Prism.Navigation;
 
 namespace RoomL21.Prism.ViewModels
 {
-    public class AgendaPageViewModel : BindableBase
+    public class AgendaPageViewModel : ViewModelBase
     {
-        public AgendaPageViewModel()
+        public AgendaPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+            Title = "My Agenda";
         }
     }
 }

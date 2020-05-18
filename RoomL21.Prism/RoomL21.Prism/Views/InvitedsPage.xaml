@@ -5,7 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="RoomL21.Prism.Views.InvitedsPage"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             IconImageSource="ic_people_outline"
+             Icon="ic_people_outline"
              Title="{Binding Title}">
     <AbsoluteLayout>
         <StackLayout

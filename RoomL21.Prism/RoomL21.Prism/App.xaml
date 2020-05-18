@@ -3,9 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="RoomL21.Prism.App">
-	<Application.Resources>
+    <Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <!-- Application resource dictionary -->
+        <x:String x:Key="UrlAPI">https://rooml21app.azurewebsites.net//</x:String>
 
-	</Application.Resources>
+        <!-- Colors -->
+        <Color x:Key="colorBackgroud">#DFEDF2</Color>
+        <Color x:Key="colorPrimary">#011C40</Color>
+        <Color x:Key="colorSecondary">#517C8C</Color>
+        <Color x:Key="colorDanger">#517C8C</Color>
+        <Color x:Key="colorAccent">#2A4359</Color>
+        <Color x:Key="colorFont">#DFEDF2</Color>
+        <Color x:Key="colorFontInverse">#011126</Color>
+
+        <!-- Styles -->
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource colorPrimary}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="TextColor" Value="{StaticResource colorFont}" />
+        </Style>
+
+        <Style x:Key="secondaryButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource colorSecondary}" />
+        </Style>
+
+        <Style x:Key="dangerButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource colorDanger}" />
+            <Setter Property="TextColor" Value="{StaticResource colorFontInverse}" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource colorFont}" />
+        </Style>
+
+    </Application.Resources>
 </prism:PrismApplication>

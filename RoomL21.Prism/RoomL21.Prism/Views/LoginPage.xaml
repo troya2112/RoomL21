@@ -49,7 +49,7 @@
                         VerticalOptions="Center"
                         TextColor="{StaticResource colorFontInverse}"/>
                     <CheckBox
-                        IsChecked="{Binding IsRemember}"/>
+                        IsChecked="{Binding IsRemember}" />
                 </StackLayout>
 
                 <StackLayout
