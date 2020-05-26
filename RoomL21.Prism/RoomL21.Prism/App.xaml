@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="RoomL21.Prism.App">
-    <Application.Resources>
-
-        <!-- Application resource dictionary -->
-        <x:String x:Key="UrlAPI">https://rooml21app.azurewebsites.net//</x:String>
+	<Application.Resources>
+    
+		<!-- Application resource dictionary -->
+        <x:String x:Key="UrlAPI">https://RoomL21.azurewebsites.net/</x:String>
 
         <!-- Colors -->
         <Color x:Key="colorBackgroud">#DFEDF2</Color>

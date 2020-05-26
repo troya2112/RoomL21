@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Prism.Commands;
-using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -91,7 +93,7 @@ namespace RoomL21.Prism.ViewModels
         private async void BackToEvents()
         {
             CleanData();
-            await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventsPage");
+            await NavigationService.NavigateAsync("/RoomL21MasterDetailPage/NavigationPage/EventsPage");
         }
 
 
@@ -176,7 +178,7 @@ namespace RoomL21.Prism.ViewModels
                     "Error",
                     response.Message,
                     "Accept");
-                return false;
+                return false ;
             }
             var eventVar = JsonConvert.DeserializeObject<EventResponse>(Settings.Event);
             var inviteds = (List<InvitedResponse>)response.Result;
@@ -187,7 +189,7 @@ namespace RoomL21.Prism.ViewModels
         private async Task<bool> ValidateData()
         {
             var _eventVar = JsonConvert.DeserializeObject<EventResponse>(Settings.Event);
-            if (_invitedsNumber >= _eventVar.InvitedsNumber)
+            if (_invitedsNumber>=_eventVar.InvitedsNumber)
             {
                 await App.Current.MainPage.DisplayAlert("Error", "You cannot invite more people than the event has", "Accept");
                 return false;

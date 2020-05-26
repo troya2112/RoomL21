@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
-using Prism.Commands;
-using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace RoomL21.Prism.ViewModels
 {
@@ -26,7 +29,7 @@ namespace RoomL21.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = "Room L21 Event - Login";
+            Title = "RoomL21 Event - Login";
             IsEnabled = true;
             IsRemember = true;
             IsRunning = false;
@@ -119,7 +122,7 @@ namespace RoomL21.Prism.ViewModels
                 return;
             }
             var token = response.Result;
-            if (UserType.Value == "Organizer")
+            if (UserType.Value=="Organizer")
             {
                 var response2 = await _apiService.GetOrganizerByEmailAsync(url, "api", "/Organizers/GetOrganizerByEmail", "bearer", token.Token, Email);
                 if (!response2.IsSuccess)
@@ -138,7 +141,7 @@ namespace RoomL21.Prism.ViewModels
 
                 IsRunning = false;
                 IsEnabled = true;
-                await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventsPage");
+                await NavigationService.NavigateAsync("/RoomL21MasterDetailPage/NavigationPage/EventsPage");
                 Password = string.Empty;
             }
             else
@@ -160,7 +163,7 @@ namespace RoomL21.Prism.ViewModels
 
                 IsRunning = false;
                 IsEnabled = true;
-                await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventTabbedPage");
+                await NavigationService.NavigateAsync("/RoomL21MasterDetailPage/NavigationPage/EventTabbedPage");
                 Password = string.Empty;
             }
         }

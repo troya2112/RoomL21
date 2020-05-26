@@ -1,8 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -84,7 +87,7 @@ namespace RoomL21.Prism.ViewModels
                 Id = r.Id,
                 Capacity = r.Capacity,
                 Address = r.Address
-            }).Where(r => (r.Capacity >= _event.InvitedsNumber)).ToList());
+            }).Where(r => (r.Capacity>=_event.InvitedsNumber)).ToList());
         }
     }
 }

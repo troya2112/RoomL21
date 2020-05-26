@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using RoomL21.Web.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RoomL21.Web.Helpers
 {
@@ -37,10 +39,10 @@ namespace RoomL21.Web.Helpers
         {
             var list = _dataContext.Roles.Select(u => new SelectListItem
             {
-                Text = u.Name,
-                Value = u.Name
-            }).ToList().Where(u => u.Text == "Owner" || u.Text == "Organizer").ToList();
-
+               Text = u.Name,
+               Value = u.Name
+            }).ToList().Where(u => u.Text=="Owner" || u.Text=="Organizer").ToList();
+            
             list.Insert(0, new SelectListItem
             {
                 Text = "(Select an User Type...)",

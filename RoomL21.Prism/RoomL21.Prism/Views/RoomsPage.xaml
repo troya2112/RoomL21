@@ -7,7 +7,6 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundColor="{StaticResource colorBackgroud}"
              Title="{Binding Title}">
-    
     <AbsoluteLayout>
         <StackLayout
          Padding="10">
@@ -23,64 +22,64 @@
                             CornerRadius="10"
                             HasShadow="True"
                             Margin="10,0,25,10">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectRoomCommand}"/>
-                                </Frame.GestureRecognizers>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectRoomCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid
                     Grid.Column="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="2*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
                             Grid.Column="0"
                             Grid.Row="0"
                             TextColor="{StaticResource colorFontInverse}"
                             Text="Owner Name"/>
-                                        <Label
+                            <Label
                             Grid.Column="1"
                             Grid.Row="0"
                             FontAttributes="Bold"
                             TextColor="{StaticResource colorFontInverse}"
                             Text="{Binding Owner}"/>
-                                        <Label
+                            <Label
                             Grid.Column="0"
                             Grid.Row="1"
                             TextColor="{StaticResource colorFontInverse}"
                             Text="Max capacity room"/>
-                                        <Label
+                            <Label
                             Grid.Column="1"
                             Grid.Row="1"
                             FontAttributes="Bold"
                             TextColor="{StaticResource colorFontInverse}"
                             Text="{Binding Capacity}"/>
-                                        <Label
+                            <Label
                             Grid.Column="0"
                             Grid.Row="2"
                             TextColor="{StaticResource colorFontInverse}"
                             Text="Address"/>
-                                        <Label
+                            <Label
                             Grid.Column="1"
                             Grid.Row="2"
                             TextColor="{StaticResource colorFontInverse}"
                             FontAttributes="Bold"
                             Text="{Binding Address}"/>
-                                    </Grid>
-                                    <Image
+                            </Grid>
+                            <Image
                             Grid.Column="2"
                             Source="ic_chevron_right"/>
-                                </Grid>
+                            </Grid>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
@@ -100,5 +99,6 @@
         ViewBoxWidth="80"
         ViewBoxHeight="80" />
     </AbsoluteLayout>
+
 
 </ContentPage>

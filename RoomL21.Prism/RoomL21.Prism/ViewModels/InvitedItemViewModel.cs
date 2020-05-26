@@ -1,5 +1,8 @@
-﻿using Prism.Navigation;
-using RoomL21.Common.Models;
+﻿using RoomL21.Common.Models;
+using Prism.Navigation;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace RoomL21.Prism.ViewModels
 {
@@ -7,7 +10,7 @@ namespace RoomL21.Prism.ViewModels
     {
         public InvitedItemViewModel(INavigationService navigationService)
         {
-
+           
         }
     }
 }

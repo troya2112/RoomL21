@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RoomL21.Web.Data.Entities
+﻿namespace RoomL21.Web.Data.Entities
 {
     public class Admin
     {

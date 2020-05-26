@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="RoomL21.Prism.Views.LoginPage"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundColor="{StaticResource colorBackgroud}"
              Title="{Binding Title}">
+    
     <ScrollView>
         <AbsoluteLayout>
             <StackLayout
@@ -49,7 +50,7 @@
                         VerticalOptions="Center"
                         TextColor="{StaticResource colorFontInverse}"/>
                     <CheckBox
-                        IsChecked="{Binding IsRemember}" />
+                        IsChecked="{Binding IsRemember}"/>
                 </StackLayout>
 
                 <StackLayout
@@ -63,18 +64,18 @@
                     HorizontalOptions="Center"
                     Text="Create a new user"
                     TextColor="{StaticResource colorAccent}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <Label
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
                     HorizontalOptions="Center"
                     Text="Forgot your password?"
                     TextColor="{StaticResource colorAccent}">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 </StackLayout>
             </StackLayout>
             <busyindicator:SfBusyIndicator  

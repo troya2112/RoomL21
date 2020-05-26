@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using Plugin.Connectivity;
 using RoomL21.Common.Models;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;

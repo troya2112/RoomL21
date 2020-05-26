@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RoomL21.Common.Models;
 using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Helpers;
-using System.Linq;
-using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RoomL21.Web.Controllers.API
 {
@@ -66,8 +67,8 @@ namespace RoomL21.Web.Controllers.API
             }
             var userNew = await _userHelper.GetUserByEmailAsync(request.Email);
             await _userHelper.AddUserToRoleAsync(userNew, request.Role);
-
-            if (request.Role == "Organizer")
+         
+            if (request.Role=="Organizer")
             {
                 _dataContext.Organizers.Add(new Organizer { User = userNew });
                 await _dataContext.SaveChangesAsync();
@@ -78,7 +79,7 @@ namespace RoomL21.Web.Controllers.API
                     userid = user.Id,
                     token = myToken,
                 }, protocol: HttpContext.Request.Scheme);
-                _mailHelper.SendMail(request.Email, "Room L21 Email confirmation", $"<h1>Email Confirmation</h1>" +
+                _mailHelper.SendMail(request.Email, "RoomL21 Email confirmation", $"<h1>Email Confirmation</h1>" +
                 $"Hi {request.FirstName}" +
                 $"Your register as Event Organizer was successfully" +
                 $"Please click on this link:<br><br><a href = \"{tokenLink}\">Confirm Email</a>");
@@ -92,7 +93,7 @@ namespace RoomL21.Web.Controllers.API
             else
             {
                 var eventVar = _dataContext.Events.FirstOrDefault(e => e.Id == request.EventId);
-                _dataContext.Inviteds.Add(new Invited { User = userNew, Event = eventVar });
+                _dataContext.Inviteds.Add(new Invited { User = userNew, Event=eventVar });
                 await _dataContext.SaveChangesAsync();
 
                 var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
@@ -101,9 +102,9 @@ namespace RoomL21.Web.Controllers.API
                     userid = user.Id,
                     token = myToken,
                 }, protocol: HttpContext.Request.Scheme);
-                _mailHelper.SendMail(request.Email, "Room L21 Email confirmation", $"<h1>Email Confirmation</h1>" +
+                _mailHelper.SendMail(request.Email, "RoomL21 Email confirmation", $"<h1>Email Confirmation</h1>" +
                 $"Hi {request.FirstName} <br>" +
-                $"You got an invitation for a <b>{eventVar.Name}</b> Event from Room L21 Events.<br>" +
+                $"You got an invitation for a <b>{eventVar.Name}</b> Event from RoomL21 Events.<br>" +
                 $" Remeber your password it's your document.<br>" +
                 $"Please confirm your asistence on this link:<br><br><a href = \"{tokenLink}\">Confirm Email</a>");
 
@@ -113,7 +114,7 @@ namespace RoomL21.Web.Controllers.API
                     Message = "A confirmation email was sent to the Invited."
                 });
             }
-
+          
         }
 
         [HttpPost]
@@ -142,7 +143,7 @@ namespace RoomL21.Web.Controllers.API
             {
                 token = myToken
             }, protocol: HttpContext.Request.Scheme);
-            _mailHelper.SendMail(request.Email, "Room L21 Password reset", $"<h1>Recover Password</h1> " +
+            _mailHelper.SendMail(request.Email, "RoomL21 Password reset", $"<h1>Recover Password</h1> " +
                 $"To reset the password click in this link:</br></br>" +
                 $"<a href = \"{link}\">Reset Password</a>");
 
@@ -196,7 +197,7 @@ namespace RoomL21.Web.Controllers.API
                 });
             }
             var user = await _userHelper.GetUserByEmailAsync(request.Email);
-            if (user == null)
+            if (user==null)
             {
                 return BadRequest(new Response<object>
                 {

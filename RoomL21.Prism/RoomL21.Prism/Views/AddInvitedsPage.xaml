@@ -117,12 +117,12 @@
                 <StackLayout
                 Orientation="Horizontal"
                 VerticalOptions="EndAndExpand">
-                    <Button
+                <Button
                 Command="{Binding RegisterCommand}"
                 IsEnabled="{Binding IsEnabled}"
                 Text="Add guest"
                 VerticalOptions="EndAndExpand"/>
-                    <Button
+                <Button
                 Command="{Binding BackToEventsCommand}"
                 BackgroundColor="{StaticResource colorSecondary}"
                 Text="Back to Events List"/>
@@ -142,4 +142,5 @@
                 ViewBoxHeight="80" />
         </AbsoluteLayout>
     </ScrollView>
+
 </ContentPage>

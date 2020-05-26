@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RoomL21.Web.Helpers
@@ -23,6 +26,5 @@ namespace RoomL21.Web.Helpers
         Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
         Task<IdentityResult> ConfirmEmailAsync(User user, string token);
         Task<IdentityResult> ChangePasswordAsync(User user, string oldPassword, string newPassword);
-     
     }
 }

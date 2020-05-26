@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: rgba(2, 2, 2, 0.05) !important;
 }
 
 /* Wrapping element */
@@ -34,4 +35,37 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:focus {
+    background-color: #517C8C !important;
+    color: #DFEDF2 !important;
+    border-color: #517C8C !important;
+}
+
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:focus, .btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus {
+    background-color: #011C40 !important;
+    color: #DFEDF2 !important;
+    border-color: #011C40 !important;
+}
+
+.btn-primary, .btn-primary:hover, .btn-warning, .btn-warning:hover, btn-warning:focus, .btn-warning:active {
+    background-color: #517C8C !important;
+    color: #DFEDF2 !important;
+    border-color: #517C8C !important;
+}
+
+.navbar-inverse {
+    background-color: #011C40 !important;
+    color: #DFEDF2 !important;
+    border-color: #011C40 !important;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    min-height: 50vh !important;
+    margin: auto !important;
 }

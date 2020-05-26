@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com" 
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="RoomL21.Prism.Views.EventsPage"
              BackgroundColor="{StaticResource colorBackgroud}"
              Title="{Binding Title}">
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_add_circle_outline" Command="{Binding AddEventCommand}"/>
+        <ToolbarItem IconImageSource="ic_add_circle_outline" Command="{Binding AddEventCommand}"/>
     </ContentPage.ToolbarItems>
     <AbsoluteLayout>
         <StackLayout
@@ -116,5 +116,6 @@
                 ViewBoxWidth="80"
                 ViewBoxHeight="80" />
     </AbsoluteLayout>
-  
+
+
 </ContentPage>

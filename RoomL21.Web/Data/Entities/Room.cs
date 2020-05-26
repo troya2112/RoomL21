@@ -6,7 +6,7 @@ namespace RoomL21.Web.Data.Entities
     public class Room
     {
         public int Id { get; set; }
-
+        
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
@@ -25,7 +25,7 @@ namespace RoomL21.Web.Data.Entities
 
         //TODO replace the correct URL for the image and make a carousel for the images
         public string ImageFullPath => string.IsNullOrEmpty(ImageUrl)
-         ? "https://https://rooml21.azurewebsites.net/images/Rooms/noimage.png"        //TODO Change Name Azure
-         : $"https://rooml21.azurewebsites.net{ImageUrl.Substring(1)}";             //TODO Change Name Azure
+         ? "https://https://RoomL21.azurewebsites.net/images/Rooms/noimage.png"
+         : $"https://RoomL21.azurewebsites.net{ImageUrl.Substring(1)}";
     }
 }

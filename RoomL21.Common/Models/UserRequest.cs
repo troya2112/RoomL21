@@ -24,6 +24,7 @@ namespace RoomL21.Common.Models
 
         public int EventId { get; set; }
 
+
         [Required]
         public string Phone { get; set; }
 

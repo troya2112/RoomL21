@@ -1,4 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -7,13 +14,6 @@ using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Helpers;
 using RoomL21.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoomL21.Web.Controllers
 {
@@ -138,7 +138,7 @@ namespace RoomL21.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.UserTypeId == "0")
+                if (model.UserTypeId=="0")
                 {
                     ModelState.AddModelError(string.Empty, "You must select an account type");
                     model.UserTypes = _combosHelper.GetComboUserTypes();
@@ -153,7 +153,7 @@ namespace RoomL21.Web.Controllers
                     return View(model);
                 }
 
-                if (model.UserTypeId.ToString() == "Organizer")
+                if (model.UserTypeId.ToString()=="Organizer")
                 {
                     var organizer = new Organizer
                     {
@@ -508,7 +508,7 @@ namespace RoomL21.Web.Controllers
                     "ResetPassword",
                     "Account",
                     new { token = myToken }, protocol: HttpContext.Request.Scheme);
-                _mailHelper.SendMail(model.Email, "Pegassus Password Reset", $"<h1>Password Reset</h1>" +
+                _mailHelper.SendMail(model.Email, "RoomL21 Password Reset", $"<h1>Password Reset</h1>" +
                     $"To reset the password click in this link:</br></br>" +
                     $"<a href = \"{link}\">Reset Password</a>");
                 ViewBag.Message = "The instructions to recover your password has been sent to email.";

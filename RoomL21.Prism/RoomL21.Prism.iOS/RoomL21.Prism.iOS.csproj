@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
         <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A923BDAB-97E4-4256-BB20-A0AA482F1A99}</ProjectGuid>
+    <ProjectGuid>{147DE4FA-C37C-4BF8-88A1-8657F1AF91A4}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RoomL21.Prism.iOS</RootNamespace>
+    <RootNamespace>Pegassus.Prism.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>RoomL21.Prism.iOS</AssemblyName>
+    <AssemblyName>Pegassus.Prism.iOS</AssemblyName>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -193,9 +193,9 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoomL21.Prism\RoomL21.Prism.csproj">
+    <ProjectReference Include="..\Pegassus.Prism\Pegassus.Prism.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
-      <Name>RoomL21.Prism</Name>
+      <Name>Pegassus.Prism</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

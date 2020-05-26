@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MailKit.Net.Smtp;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
-using MailKit.Net.Smtp;
 
 namespace RoomL21.Web.Helpers
 {

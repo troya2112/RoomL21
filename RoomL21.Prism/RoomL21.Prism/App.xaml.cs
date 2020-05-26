@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
-using Prism;
+﻿using Prism;
 using Prism.Ioc;
-using RoomL21.Common.Helpers;
-using RoomL21.Common.Models;
-using RoomL21.Common.Services;
 using RoomL21.Prism.ViewModels;
 using RoomL21.Prism.Views;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using RoomL21.Common.Services;
+using Newtonsoft.Json;
+using RoomL21.Common.Helpers;
+using RoomL21.Common.Models;
+using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace RoomL21.Prism
@@ -27,50 +27,50 @@ namespace RoomL21.Prism
         protected override async void OnInitialized()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjU4NTU5QDMxMzgyZTMxMmUzMFBQQm1XdUc5VGo2WS9QaVUxQ05lemEzUkxpUVg1Smw0QVZ6eDNjbXdQb2c9");
+
             InitializeComponent();
 
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             if (Settings.IsRemembered && token?.Expiration > DateTime.Now)
             {
-                if (Settings.UserType == "Organizer")
+                if (Settings.UserType=="Organizer")
                 {
-                    //await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventsPage");
-                    await NavigationService.NavigateAsync("/L21DetailPage/NavigationPage/EventsPage");
+                    //await NavigationService.NavigateAsync("/PegasssusMasterDetailPage/NavigationPage/EventsPage");
+                    await NavigationService.NavigateAsync("/RoomL21MasterDetailPage/NavigationPage/EventsPage");
                 }
                 else
                 {
-                    await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventTabbedPage");
+                    await NavigationService.NavigateAsync("/RoomL21MasterDetailPage/NavigationPage/EventTabbedPage");
                 }
             }
             else
             {
                 await NavigationService.NavigateAsync("/NavigationPage/LoginPage");
-                //await NavigationService.NavigateAsync("L21MasterDetailPage");
+                //await NavigationService.NavigateAsync("RoomL21MasterDetailPage");
             }
 
-            // await NavigationService.NavigateAsync("NavigationPage/LoginPage");   Old Info
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
-            containerRegistry.RegisterForNavigation<L21MasterDetailPage, L21MasterDetailPageViewModel>();
-            containerRegistry.RegisterForNavigation<AddInvitedsPage, AddInvitedsPageViewModel>();
-            containerRegistry.RegisterForNavigation<AgendaPage, AgendaPageViewModel>();
-            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
-            containerRegistry.RegisterForNavigation<EditEvent, EditEventViewModel>();
-            containerRegistry.RegisterForNavigation<EventPage, EventPageViewModel>();
-            containerRegistry.RegisterForNavigation<EventsPage, EventsPageViewModel>();
-            containerRegistry.RegisterForNavigation<EventTabbedPage, EventTabbedPageViewModel>();
-            containerRegistry.RegisterForNavigation<InvitedsPage, InvitedsPageViewModel>();
-            containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
-            containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
-            containerRegistry.RegisterForNavigation<RoomPage, RoomPageViewModel>();
+            containerRegistry.RegisterForNavigation<RoomL21MasterDetailPage, RoomL21MasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<EventsPage, EventsPageViewModel>();
+            containerRegistry.RegisterForNavigation<EventPage, EventPageViewModel>();
+            containerRegistry.RegisterForNavigation<AgendaPage, AgendaPageViewModel>();
+            containerRegistry.RegisterForNavigation<MapPage, MapPageViewModel>();
+            containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
+            containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
+            containerRegistry.RegisterForNavigation<EditEvent, EditEventViewModel>();
             containerRegistry.RegisterForNavigation<RoomsPage, RoomsPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddInvitedsPage, AddInvitedsPageViewModel>();
+            containerRegistry.RegisterForNavigation<RoomPage, RoomPageViewModel>();
+            containerRegistry.RegisterForNavigation<EventTabbedPage, EventTabbedPageViewModel>();
+            containerRegistry.RegisterForNavigation<InvitedsPage, InvitedsPageViewModel>();
         }
     }
 }

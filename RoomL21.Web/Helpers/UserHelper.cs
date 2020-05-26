@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Models;
-using System.Threading.Tasks;
 
 namespace RoomL21.Web.Helpers
 {
@@ -53,6 +56,7 @@ namespace RoomL21.Web.Helpers
         {
             return await _userManager.UpdateAsync(user);
         }
+
 
         public async Task<IdentityResult> AddUserAsync(User user, string password)
         {
@@ -112,5 +116,7 @@ namespace RoomL21.Web.Helpers
         {
             return await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
         }
+
+
     }
 }

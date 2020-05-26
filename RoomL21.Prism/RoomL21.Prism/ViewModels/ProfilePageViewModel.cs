@@ -1,9 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Prism.Commands;
-using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RoomL21.Prism.ViewModels
@@ -30,7 +34,7 @@ namespace RoomL21.Prism.ViewModels
             _apiService = apiService;
             Title = "Modify Profile";
             IsEnabled = true;
-            if (Settings.UserType == "Organizer")
+            if (Settings.UserType=="Organizer")
             {
                 Organizer = JsonConvert.DeserializeObject<OrganizerResponse>(Settings.Organizer);
                 Address = Organizer.Address;
@@ -91,7 +95,7 @@ namespace RoomL21.Prism.ViewModels
             get => _invited;
             set => SetProperty(ref _invited, value);
         }
-
+        
 
 
         public bool IsRunning
@@ -177,7 +181,7 @@ namespace RoomL21.Prism.ViewModels
         {
             if (Settings.UserType == "Organizer")
             {
-                return new UserRequest
+                return  new UserRequest
                 {
                     Address = Address,
                     Document = Document,
@@ -228,7 +232,7 @@ namespace RoomL21.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Error", "You must enter an Address.", "Accept");
                 return false;
-            }
+            }           
 
             return true;
         }

@@ -5,27 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MailKit" Version="2.6.0" />
+    <PackageReference Include="MailKit" Version="2.3.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="2.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
-    <PackageReference Include="MimeKit" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Rooms\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RoomL21.Common\RoomL21.Common.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="images\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Admins\" />
-    <Folder Include="Views\Agenda\" />
-    <Folder Include="Views\EventTypes\" />
-    <Folder Include="Views\Inviteds\" />
-    <Folder Include="Views\Rooms\" />
-    <Folder Include="Views\Owners\" />
-    <Folder Include="Views\Organizers\" />
   </ItemGroup>
 
 </Project>

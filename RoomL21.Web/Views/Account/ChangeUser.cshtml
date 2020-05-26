@@ -1,0 +1,27 @@
+﻿@model RoomL21.Web.Models.EditUserViewModel
+@{
+    ViewData["Title"] = "ChangeUser";
+}
+
+<h2>Edit</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ChangeUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <partial name="_User" />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="ChangePW" class="btn btn-warning">Change Password</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
