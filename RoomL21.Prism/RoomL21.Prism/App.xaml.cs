@@ -58,7 +58,7 @@ namespace RoomL21.Prism
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<RememberPasswordPage, RememberPasswordPageViewModel>();
-            containerRegistry.RegisterForNavigation<RoomL21MasterDetailPage, L21MasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<L21MasterDetailPage, L21MasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<EventsPage, EventsPageViewModel>();
             containerRegistry.RegisterForNavigation<EventPage, EventPageViewModel>();
             containerRegistry.RegisterForNavigation<AgendaPage, AgendaPageViewModel>();
