@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Prism.Commands;
+using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RoomL21.Prism.ViewModels
@@ -20,7 +16,7 @@ namespace RoomL21.Prism.ViewModels
         private bool _isEnabled;
         private DelegateCommand _changePasswordCommand;
 
-        public ChangePasswordPageViewModel(INavigationService navigationService, IApiService apiService):base(navigationService)
+        public ChangePasswordPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiService = apiService;
@@ -57,7 +53,7 @@ namespace RoomL21.Prism.ViewModels
 
             IsRunning = true;
             IsEnabled = false;
-           
+
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var request = AsingChangePasswordRequest();
             var url = App.Current.Resources["UrlAPI"].ToString();

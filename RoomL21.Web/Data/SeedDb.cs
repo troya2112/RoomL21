@@ -22,9 +22,9 @@ namespace RoomL21.Web.Data
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRoles();
 
-            User owner = await CheckUserAsync("1010", "Juan", "Ochoa", "jochoa.gaviria@hotmail.com", "311 743 7028", "Carrera 49", "Owner");
+            User owner = await CheckUserAsync("1010", "Andres", "Ospina", "jospina@visionamos.com", "3022340789", "Cra 48 10 45", "Owner");
             User admin = await CheckUserAsync("2020", "Jonathan", "Ospina", "jonathanospinac@gmail.com", "311 392 6724", "Calle 70", "Admin");
-            User organizer = await CheckUserAsync("3030", "Jose David", "Ocampo", "davidocampo101@gmail.com", "300 295 5427", "Calle 26", "Organizer");
+            User organizer = await CheckUserAsync("3030", "Jonathan", "Cordoba", "jonathanospina118576@correo.itm.edu.co", "3187355010", "Calle 10", "Organizer");
 
             await CheckEventTypesAsync();
 
@@ -42,8 +42,8 @@ namespace RoomL21.Web.Data
             Owner owner = _dataContext.Owners.FirstOrDefault();
             if (!_dataContext.Rooms.Any())
             {
-                AddRoom(50, "Carrera 90 B # 32", owner, "Es un lugar muy acojedor");
-                AddRoom(120, "Carrera 50 D # 122", owner, "Si buscas economia, este es tu lugar");
+                AddRoom(50, "Carrera 90 B # 32", owner, "Is a beautifull place");
+                AddRoom(120, "Carrera 50 D # 122", owner, "A great experience");
                 await _dataContext.SaveChangesAsync();
             }
         }
@@ -89,9 +89,9 @@ namespace RoomL21.Web.Data
         {
             if (!_dataContext.EventTypes.Any())
             {
-                _dataContext.EventTypes.Add(new EventType { Name = "Boda" });
-                _dataContext.EventTypes.Add(new EventType { Name = "Cumpleaños" });
-                _dataContext.EventTypes.Add(new EventType { Name = "Despedida de soltero" });
+                _dataContext.EventTypes.Add(new EventType { Name = "Marriage" });
+                _dataContext.EventTypes.Add(new EventType { Name = "Birthday" });
+                _dataContext.EventTypes.Add(new EventType { Name = "Bachelor's farewell" });
                 _dataContext.EventTypes.Add(new EventType { Name = "Baby Shower" });
                 await _dataContext.SaveChangesAsync();
             }

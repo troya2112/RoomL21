@@ -6,7 +6,7 @@
 	<Application.Resources>
     
 		<!-- Application resource dictionary -->
-        <x:String x:Key="UrlAPI">https://RoomL21.azurewebsites.net/</x:String>
+        <x:String x:Key="UrlAPI">https://rooml21app.azurewebsites.net/</x:String>
 
         <!-- Colors -->
         <Color x:Key="colorBackgroud">#DFEDF2</Color>

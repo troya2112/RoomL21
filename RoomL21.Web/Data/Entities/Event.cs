@@ -13,7 +13,7 @@ namespace RoomL21.Web.Data.Entities
         public string Name { get; set; }
 
         [Display(Name = "Number of invites")]
-        [Range(1,300,ErrorMessage = "The number of invites, must be between 1 and 300")]
+        [Range(1, 300, ErrorMessage = "The number of invites, must be between 1 and 300")]
         [Required(ErrorMessage = "The field {0} is mandatory")]
         public int InvitesNumber { get; set; }
 

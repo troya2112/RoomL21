@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +7,13 @@ using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Helpers;
 using RoomL21.Web.Models;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RoomL21.Web.Controllers
 {
@@ -138,7 +138,7 @@ namespace RoomL21.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.UserTypeId=="0")
+                if (model.UserTypeId == "0")
                 {
                     ModelState.AddModelError(string.Empty, "You must select an account type");
                     model.UserTypes = _combosHelper.GetComboUserTypes();
@@ -153,7 +153,7 @@ namespace RoomL21.Web.Controllers
                     return View(model);
                 }
 
-                if (model.UserTypeId.ToString()=="Organizer")
+                if (model.UserTypeId.ToString() == "Organizer")
                 {
                     var organizer = new Organizer
                     {
@@ -186,14 +186,14 @@ namespace RoomL21.Web.Controllers
                     $"<table style = 'max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>" +
                     $"  <tr>" +
                     $"    <td style = 'background-color: #34495e; text-align: center; padding: 0'>" +
-                    $"       <a href = 'https://www.facebook.com/NuskeCIV/' >" +
-                    $"         <img width = '20%' style = 'display:block; margin: 1.5% 3%' src= 'https://veterinarianuske.com/wp-content/uploads/2016/10/line_separator.png'>" +
+                    $"       <a href = '' >" +
+                    $"         <img width = '20%' style = 'display:block; margin: 1.5% 3%' src= ''>" +
                     $"       </a>" +
                     $"  </td>" +
                     $"  </tr>" +
                     $"  <tr>" +
                     $"  <td style = 'padding: 0'>" +
-                    $"     <img style = 'padding: 0; display: block' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/logo-nnske-blanck.jpg' width = '100%'>" +
+                    $"     <img style = 'padding: 0; display: block' src = '' width = '100%'>" +
                     $"  </td>" +
                     $"</tr>" +
                     $"<tr>" +
@@ -212,7 +212,7 @@ namespace RoomL21.Web.Controllers
                     $"        <li> Estetica canina.</li>" +
                     $"      </ul>" +
                     $"  <div style = 'width: 100%;margin:20px 0; display: inline-block;text-align: center'>" +
-                    $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/tarjetas.png'>" +
+                    $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = ''>" +
                     $"  </div>" +
                     $"  <div style = 'width: 100%; text-align: center'>" +
                     $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +
@@ -536,7 +536,7 @@ namespace RoomL21.Web.Controllers
                 var result = await _userHelper.ResetPasswordAsync(user, model.Token, model.Password);
                 if (result.Succeeded)
                 {
-                    ViewBag.Message = "Password reset successful.";
+                    ViewBag.Message = "Password reset successfull.";
                     return View();
                 }
 

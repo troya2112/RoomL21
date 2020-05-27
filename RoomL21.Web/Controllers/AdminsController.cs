@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Helpers;
 using RoomL21.Web.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RoomL21.Web.Controllers
 {
@@ -100,7 +100,7 @@ namespace RoomL21.Web.Controllers
 
                         _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
                             $"To allow the user, " +
-                            $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                            $"please click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
 
                         return RedirectToAction(nameof(Index));
                     }

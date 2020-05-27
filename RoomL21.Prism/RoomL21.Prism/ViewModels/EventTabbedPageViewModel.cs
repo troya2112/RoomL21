@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace RoomL21.Prism.ViewModels
 {

@@ -1,10 +1,7 @@
-﻿using RoomL21.Common.Helpers;
-using RoomL21.Common.Models;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using RoomL21.Common.Helpers;
+using RoomL21.Common.Models;
 
 namespace RoomL21.Prism.ViewModels
 {
@@ -29,7 +26,7 @@ namespace RoomL21.Prism.ViewModels
                 return;
             }
 
-            await _navigationService.NavigateAsync($"/RoomL21MasterDetailPage/NavigationPage/{PageName}");
+            await _navigationService.NavigateAsync($"/L21MasterDetailPage/NavigationPage/{PageName}");
 
         }
     }

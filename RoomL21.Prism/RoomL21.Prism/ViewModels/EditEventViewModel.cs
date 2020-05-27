@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Prism.Commands;
+using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -227,7 +226,7 @@ namespace RoomL21.Prism.ViewModels
             {
                 var request = new EventRequest
                 {
-                    Id=Event.Id,
+                    Id = Event.Id,
                     Name = Event.Name,
                     InvitedsNumber = InvitedNumber.Value,
                     EventTypeId = EventType.Id,
@@ -300,7 +299,7 @@ namespace RoomL21.Prism.ViewModels
 
                 await App.Current.MainPage.DisplayAlert(
                     "Ok",
-                    "The event was added susccesfully, please select the best room for you.",
+                    "The event was added successfully, please select the best room for you.",
                     "Accept");
 
                 Settings.Event = JsonConvert.SerializeObject(request);

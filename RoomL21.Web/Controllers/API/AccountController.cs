@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +7,8 @@ using RoomL21.Common.Models;
 using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Helpers;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RoomL21.Web.Controllers.API
 {
@@ -67,8 +65,8 @@ namespace RoomL21.Web.Controllers.API
             }
             var userNew = await _userHelper.GetUserByEmailAsync(request.Email);
             await _userHelper.AddUserToRoleAsync(userNew, request.Role);
-         
-            if (request.Role=="Organizer")
+
+            if (request.Role == "Organizer")
             {
                 _dataContext.Organizers.Add(new Organizer { User = userNew });
                 await _dataContext.SaveChangesAsync();
@@ -93,7 +91,7 @@ namespace RoomL21.Web.Controllers.API
             else
             {
                 var eventVar = _dataContext.Events.FirstOrDefault(e => e.Id == request.EventId);
-                _dataContext.Inviteds.Add(new Invited { User = userNew, Event=eventVar });
+                _dataContext.Inviteds.Add(new Invited { User = userNew, Event = eventVar });
                 await _dataContext.SaveChangesAsync();
 
                 var myToken = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
@@ -114,7 +112,7 @@ namespace RoomL21.Web.Controllers.API
                     Message = "A confirmation email was sent to the Invited."
                 });
             }
-          
+
         }
 
         [HttpPost]
@@ -197,7 +195,7 @@ namespace RoomL21.Web.Controllers.API
                 });
             }
             var user = await _userHelper.GetUserByEmailAsync(request.Email);
-            if (user==null)
+            if (user == null)
             {
                 return BadRequest(new Response<object>
                 {

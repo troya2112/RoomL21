@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RoomL21.Common.Models
+﻿namespace RoomL21.Common.Models
 {
     public class RoomResponse
     {

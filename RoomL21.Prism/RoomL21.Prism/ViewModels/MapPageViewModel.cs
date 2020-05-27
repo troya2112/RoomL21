@@ -1,13 +1,8 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Prism.Navigation;
 
 namespace RoomL21.Prism.ViewModels
 {
-    public class MapPageViewModel : ViewModelBase 
+    public class MapPageViewModel : ViewModelBase
     {
         public MapPageViewModel(INavigationService navigationService) : base(navigationService)
         {

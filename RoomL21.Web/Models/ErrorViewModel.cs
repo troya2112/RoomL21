@@ -1,5 +1,3 @@
-using System;
-
 namespace RoomL21.Web.Models
 {
     public class ErrorViewModel
