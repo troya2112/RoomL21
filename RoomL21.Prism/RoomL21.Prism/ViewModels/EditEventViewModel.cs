@@ -302,7 +302,7 @@ namespace RoomL21.Prism.ViewModels
                     "The event was added successfully, please select the best room for you.",
                     "Accept");
 
-                Settings.Event = JsonConvert.SerializeObject(request);
+                Settings.Event = JsonConvert.SerializeObject(response.Result);
                 Settings.EventDate = Event.Date.ToString();
                 await EventsPageViewModel.GetInstance().RefreshUser();
                 await _navigationService.NavigateAsync("RoomsPage");

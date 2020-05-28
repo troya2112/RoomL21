@@ -110,7 +110,7 @@
                 BackgroundColor="{StaticResource colorDanger}"
                 HorizontalOptions="Center"
                 TextColor="{StaticResource colorFontInverse}"
-                IsVisible="{Binding IsRunning}"
+                IsBusy="{Binding IsRunning}"
                 Title="Loading..."
                 VerticalOptions="Center"
                 ViewBoxWidth="80"

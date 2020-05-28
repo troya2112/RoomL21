@@ -30,7 +30,8 @@ namespace RoomL21.Web.Helpers
                 Name = eventVar.Name,
                 EventType = eventVar.EventType.Name,
                 InvitedsNumber = eventVar.InvitesNumber,
-                Remarks = eventVar.Remarks
+                Remarks = eventVar.Remarks,
+                EventTypeId = eventVar.EventType.Id
             };
         }
 

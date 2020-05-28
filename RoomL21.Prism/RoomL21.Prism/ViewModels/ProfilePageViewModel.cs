@@ -185,7 +185,8 @@ namespace RoomL21.Prism.ViewModels
                     FirstName = FirstName,
                     LastName = LastName,
                     Password = "123456", // It doesn't matter what is sent here. It is only for the model to be valid
-                    Phone = PhoneNumber
+                    Phone = PhoneNumber, 
+                    Role = Settings.UserType.ToString()
                 };
             }
             else
@@ -198,7 +199,8 @@ namespace RoomL21.Prism.ViewModels
                     FirstName = FirstName,
                     LastName = LastName,
                     Password = "123456", // It doesn't matter what is sent here. It is only for the model to be valid
-                    Phone = PhoneNumber
+                    Phone = PhoneNumber,
+                    Role = Settings.UserType.ToString()
                 };
             }
         }

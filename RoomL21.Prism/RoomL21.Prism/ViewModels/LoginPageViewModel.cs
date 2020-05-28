@@ -174,7 +174,7 @@ namespace RoomL21.Prism.ViewModels
         private async void LoadUserTypesAsync()
         {
             IsEnabled = false;
-
+            IsRunning = true;
             var url = App.Current.Resources["UrlAPI"].ToString();
 
             var connection = await _apiService.CheckConnection(url);
@@ -188,14 +188,11 @@ namespace RoomL21.Prism.ViewModels
                     "Accept");
                 return;
             }
-
             var response = await _apiService.GetUserTypesAsync<UserTypeResponse>(
                 url,
                 "/api",
                 "/UserTypes",
                 "/GetUserTypes");
-
-            IsEnabled = true;
 
             if (!response.IsSuccess)
             {
@@ -208,7 +205,8 @@ namespace RoomL21.Prism.ViewModels
 
             var userTypes = (List<UserTypeResponse>)response.Result;
             UserTypes = new ObservableCollection<UserTypeResponse>(userTypes);
-
+            IsEnabled = true;
+            IsRunning = false;
         }
 
         private async void Register()

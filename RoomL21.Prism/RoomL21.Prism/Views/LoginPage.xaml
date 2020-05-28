@@ -85,11 +85,13 @@
                 BackgroundColor="{StaticResource colorDanger}"
                 HorizontalOptions="Center"
                 TextColor="{StaticResource colorFontInverse}"
-                IsVisible="{Binding IsRunning}"
+                IsBusy="{Binding IsRunning}"
                 Title="Loading..."
                 VerticalOptions="Center"
                 ViewBoxWidth="80"
                 ViewBoxHeight="80" />
+            <!--<ActivityIndicator  IsRunning="{Binding IsRunning}"/>-->
+
         </AbsoluteLayout>
     </ScrollView>
 </ContentPage>
