@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
+using RoomL21.Web.Helpers;
+using RoomL21.Web.Models;
+using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,16 +15,21 @@ namespace RoomL21.Web.Controllers
     public class RoomsController : Controller
     {
         private readonly DataContext _context;
+        private readonly IConverterHelper _converterHelper;
 
-        public RoomsController(DataContext context)
+        public RoomsController(DataContext context, IConverterHelper converterHelper)
         {
             _context = context;
+            _converterHelper = converterHelper;
         }
 
         // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rooms.ToListAsync());
+            return View(await _context.Rooms
+                .Include(o => o.Owner)
+                .Include(o => o.Events)
+                .ToListAsync());
         }
 
         // GET: Rooms/Details/5
@@ -51,15 +61,44 @@ namespace RoomL21.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ImageUrl,Capacity,Address,Remarks")] Room room)
+        public async Task<IActionResult> Create([Bind("Id,ImageUrl,Capacity,Address,Remarks")] RoomViewModel view)
         {
             if (ModelState.IsValid)
             {
+                var path = view.ImageUrl;
+
+                if (view.ImageFile != null && view.ImageFile.Length > 0)
+                {
+                    var guid = Guid.NewGuid().ToString();
+                    var file = $"{guid}.jpg";
+
+                    path = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot\\images\\Rooms",
+                        file);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await view.ImageFile.CopyToAsync(stream);
+                    }
+
+                    path = $"~/images/Rooms/{file}";
+                }
+                var room = new Room
+                {
+                    ImageUrl = path,
+                    Capacity = view.Capacity,
+                    Address = view.Address,
+                    Owner = await _context.Owners.FindAsync(view.OwnerId),
+                    Remarks = view.Remarks
+                };
+
+
                 _context.Add(room);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(room);
+            return View(view);
         }
 
         // GET: Rooms/Edit/5
@@ -70,12 +109,27 @@ namespace RoomL21.Web.Controllers
                 return NotFound();
             }
 
-            var room = await _context.Rooms.FindAsync(id);
+            //var room = await _context.Rooms.FindAsync(id);
+            var room = await _context.Rooms.Include(r => r.Owner).FirstOrDefaultAsync(r => r.Id == id);
             if (room == null)
             {
                 return NotFound();
             }
-            return View(room);
+
+            var roomView = new RoomViewModel
+            {
+                Id = room.Id,
+                Agendas = room.Agendas,
+                Address = room.Address,
+                Capacity = room.Capacity,
+                ImageUrl = room.ImageUrl,
+                Events = room.Events,
+                Owner = room.Owner,
+                Remarks = room.Remarks,
+                OwnerId = room.Owner.Id
+            };
+
+            return View(roomView);
         }
 
         // POST: Rooms/Edit/5
@@ -83,9 +137,9 @@ namespace RoomL21.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ImageUrl,Capacity,Address,Remarks")] Room room)
+        public async Task<IActionResult> Edit(int id, RoomViewModel view)
         {
-            if (id != room.Id)
+            if (id != view.Id)
             {
                 return NotFound();
             }
@@ -94,12 +148,40 @@ namespace RoomL21.Web.Controllers
             {
                 try
                 {
+                    var path = view.ImageUrl;
+
+                    if (view.ImageFile != null && view.ImageFile.Length > 0)
+                    {
+                        var guid = Guid.NewGuid().ToString();
+                        var file = $"{guid}.jpg";
+
+                        path = Path.Combine(
+                            Directory.GetCurrentDirectory(),
+                            "wwwroot\\images\\Rooms",
+                            file);
+
+                        using (var stream = new FileStream(path, FileMode.Create))
+                        {
+                            await view.ImageFile.CopyToAsync(stream);
+                        }
+
+                        path = $"~/images/Rooms/{file}";
+                    }
+                    var room = new Room
+                    {
+                        Id = view.Id,
+                        ImageUrl = path,
+                        Capacity = view.Capacity,
+                        Address = view.Address,
+                        Owner = await _context.Owners.FindAsync(view.OwnerId),
+                        Remarks = view.Remarks
+                    };
                     _context.Update(room);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoomExists(room.Id))
+                    if (!RoomExists(view.Id))
                     {
                         return NotFound();
                     }
@@ -110,7 +192,7 @@ namespace RoomL21.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(room);
+            return View(_converterHelper.ToRoomViewModel(view));
         }
 
         // GET: Rooms/Delete/5

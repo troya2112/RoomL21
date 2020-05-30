@@ -2,6 +2,7 @@
 using RoomL21.Web.Data;
 using RoomL21.Web.Data.Entities;
 using RoomL21.Web.Models;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RoomL21.Web.Helpers
@@ -64,7 +65,7 @@ namespace RoomL21.Web.Helpers
                 Events = room.Events,
                 Owner = room.Owner,
                 Remarks = room.Remarks,
-                OwnerId = room.Owner.Id,
+                OwnerId = room.Owner.Id
             };
         }
 
