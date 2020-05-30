@@ -61,7 +61,7 @@ namespace RoomL21.Web.Controllers.API
             var result = await _userHelper.AddUserAsync(user, request.Password);
             if (result != IdentityResult.Success)
             {
-                return BadRequest(result.Errors.FirstOrDefault().Description);
+                return BadRequest("Error Jonathan!!");
             }
             var userNew = await _userHelper.GetUserByEmailAsync(request.Email);
             await _userHelper.AddUserToRoleAsync(userNew, request.Role);

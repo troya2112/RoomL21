@@ -207,32 +207,62 @@ namespace RoomL21.Prism.ViewModels
 
         private async Task<bool> ValidateData()
         {
-
-            if (string.IsNullOrEmpty(Organizer.Document))
+            if (Settings.UserType == "Organizer")
             {
-                await App.Current.MainPage.DisplayAlert("Error", "You must enter a document.", "Accept");
-                return false;
-            }
+                if (string.IsNullOrEmpty(Organizer.Document))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter a document.", "Accept");
+                    return false;
+                }
 
-            if (string.IsNullOrEmpty(Organizer.FirstName))
+                if (string.IsNullOrEmpty(Organizer.FirstName))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter a FirstName.", "Accept");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(Organizer.LastName))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter a LastName.", "Accept");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(Organizer.Address))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter an Address.", "Accept");
+                    return false;
+                }
+
+                return true;
+            }
+            else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "You must enter a FirstName.", "Accept");
-                return false;
-            }
+                if (string.IsNullOrEmpty(Invited.Document))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter a document.", "Accept");
+                    return false;
+                }
 
-            if (string.IsNullOrEmpty(Organizer.LastName))
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "You must enter a LastName.", "Accept");
-                return false;
-            }
+                if (string.IsNullOrEmpty(Invited.FirstName))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter a FirstName.", "Accept");
+                    return false;
+                }
 
-            if (string.IsNullOrEmpty(Organizer.Address))
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "You must enter an Address.", "Accept");
-                return false;
-            }
+                if (string.IsNullOrEmpty(Invited.LastName))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter a LastName.", "Accept");
+                    return false;
+                }
 
-            return true;
+                if (string.IsNullOrEmpty(Invited.Address))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "You must enter an Address.", "Accept");
+                    return false;
+                }
+
+                return true;
+            }
         }
 
         private async void ChangePassword()
