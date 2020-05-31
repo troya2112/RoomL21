@@ -1,8 +1,12 @@
-﻿using Android.App;
+﻿using Android;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 using Prism;
 using Prism.Ioc;
+using System;
 
 namespace RoomL21.Prism.Droid
 {
@@ -19,6 +23,21 @@ namespace RoomL21.Prism.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != Permission.Granted || ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) != Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation }, 0);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
+            }
+        }
+
     }
 
     public class AndroidInitializer : IPlatformInitializer

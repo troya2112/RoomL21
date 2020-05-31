@@ -6,7 +6,7 @@ namespace RoomL21.Prism.ViewModels
     {
         public MapPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "My map";
+            Title = "Map";
         }
     }
 }
