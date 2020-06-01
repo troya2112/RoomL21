@@ -6,6 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              BackgroundColor="{StaticResource colorBackgroud}"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="RoomL21.Prism.Views.RoomPage"
              Title="{Binding Title}">
     <StackLayout
@@ -88,5 +89,14 @@
             Text="Select Room"
             IsEnabled="{Binding IsEnabled}"
             VerticalOptions="EndAndExpand"/>
+        <Label
+            HorizontalOptions="Center"
+            Text="View room on map!"
+            TextColor="{StaticResource colorAccent}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding MapCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
     </StackLayout>
+
 </ContentPage>

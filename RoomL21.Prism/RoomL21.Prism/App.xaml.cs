@@ -37,6 +37,7 @@ namespace RoomL21.Prism
                 {
                     //await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventsPage");
                     await NavigationService.NavigateAsync("/L21MasterDetailPage/NavigationPage/EventsPage");
+                    //await NavigationService.NavigateAsync("RoomPage");
                 }
                 else
                 {

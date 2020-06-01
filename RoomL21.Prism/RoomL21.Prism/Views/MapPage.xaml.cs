@@ -12,7 +12,7 @@ namespace RoomL21.Prism.Views
     {
         public MapPage()
         {
-            InitializeComponent(); InitializeComponent();
+            InitializeComponent();
             RoomResponse Room = JsonConvert.DeserializeObject<RoomResponse>(Settings.Room);
             if (!string.IsNullOrWhiteSpace(Room.Address))
             {

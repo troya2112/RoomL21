@@ -2,8 +2,10 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
+using Plugin.Permissions;
 using Prism;
 using Prism.Ioc;
 using System;
@@ -21,6 +23,8 @@ namespace RoomL21.Prism.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.FormsMaps.Init(this, bundle);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             LoadApplication(new App(new AndroidInitializer()));
         }
 
@@ -36,6 +40,13 @@ namespace RoomL21.Prism.Droid
             {
                 System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
             }
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(
+                requestCode,
+                permissions,
+                grantResults);
         }
 
     }

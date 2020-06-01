@@ -13,96 +13,98 @@
         <ToolbarItem IconImageSource="ic_add_circle_outline" Command="{Binding AddEventCommand}"/>
     </ContentPage.ToolbarItems>
     <AbsoluteLayout>
-        <StackLayout
-        Padding="10">
-            <ListView
+        <ScrollView>
+            <StackLayout
+            Padding="10">
+             <ListView
             BackgroundColor="Transparent"
             SeparatorVisibility="None"
             HasUnevenRows="True"
             ItemsSource="{Binding Events}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Frame
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
                             CornerRadius="10"
                             HasShadow="True"
                             Margin="10,0,25,10">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectEventCommand}"/>
-                                </Frame.GestureRecognizers>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid
-                                    Grid.Column="1">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectEventCommand}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label
+                                        <Grid
+                                    Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label
                                         Grid.Column="0"
                                         Grid.Row="0"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="Event Name"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="1"
                                         Grid.Row="0"
                                         FontAttributes="Bold"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="{Binding Name}"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="0"
                                         Grid.Row="1"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="Max invited number"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="1"
                                         Grid.Row="1"
                                         FontAttributes="Bold"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="{Binding InvitedsNumber}"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="0"
                                         Grid.Row="2"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="Event Type"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         TextColor="{StaticResource colorFontInverse}"
                                         FontAttributes="Bold"
                                         Text="{Binding EventType}"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="0"
                                         Grid.Row="3"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="Date"/>
-                                        <Label
+                                            <Label
                                         Grid.Column="1"
                                         Grid.Row="3"
                                         FontAttributes="Bold"
                                         TextColor="{StaticResource colorFontInverse}"
                                         Text="{Binding Date, StringFormat='{0:yyyy/MM/dd}'}"/>
-                                    </Grid>
-                                    <Image
+                                        </Grid>
+                                        <Image
                                     Grid.Column="2"
                                     Source="ic_chevron_right"/>
-                                </Grid>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
         <busyindicator:SfBusyIndicator  
                 AnimationType="DoubleCircle"
                 AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
@@ -116,6 +118,4 @@
                 ViewBoxWidth="80"
                 ViewBoxHeight="80" />
     </AbsoluteLayout>
-
-
 </ContentPage>

@@ -4,6 +4,7 @@ using Prism.Navigation;
 using RoomL21.Common.Helpers;
 using RoomL21.Common.Models;
 using RoomL21.Common.Services;
+using System;
 
 namespace RoomL21.Prism.ViewModels
 {
@@ -13,6 +14,7 @@ namespace RoomL21.Prism.ViewModels
         private EventResponse _event;
         private string _eventDate;
         private DelegateCommand _selectRoomCommand;
+        private DelegateCommand _mapCommand;
         private bool _isRunning;
         private bool _isEnabled;
         private readonly INavigationService _navigationService;
@@ -53,6 +55,12 @@ namespace RoomL21.Prism.ViewModels
         }
 
         public DelegateCommand SelectRoomCommand => _selectRoomCommand ?? (_selectRoomCommand = new DelegateCommand(SelectRoomAsync));
+        public DelegateCommand MapCommand => _mapCommand ?? (_mapCommand = new DelegateCommand(ViewMap));
+
+        private async void ViewMap()
+        {
+            await NavigationService.NavigateAsync("MapPage");
+        }
 
         private async void SelectRoomAsync()
         {
