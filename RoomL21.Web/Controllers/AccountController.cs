@@ -201,24 +201,24 @@ namespace RoomL21.Web.Controllers
                     $"      <div style = 'color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif'>" +
                     $"            <h1 style = 'color: #e67e22; margin: 0 0 7px' > Hola </h1>" +
                     $"                    <p style = 'margin: 2px; font-size: 15px'>" +
-                    $"                      El mejor Hospital Veterinario Especializado de la Ciudad de Morelia enfocado a brindar servicios médicos y quirúrgicos<br>" +
-                    $"                      aplicando las técnicas más actuales y equipo de vanguardia para diagnósticos precisos y tratamientos oportunos..<br>" +
-                    $"                      Entre los servicios tenemos:</p>" +
+                    $"                      Un servicio pensado en brindar los mejores espacios de reuniones y fiestas<br>" +
+                    $"                      Siempre con el objetivo de brindar una experiencia inolvidable<br>" +
+                    $"                      Entre los servicios mas especializados tenemos:</p>" +
                     $"      <ul style = 'font-size: 15px;  margin: 10px 0'>" +
-                    $"        <li> Urgencias.</li>" +
-                    $"        <li> Medicina Interna.</li>" +
-                    $"        <li> Imagenologia.</li>" +
-                    $"        <li> Pruebas de laboratorio y gabinete.</li>" +
-                    $"        <li> Estetica canina.</li>" +
+                    $"        <li> Bodas.</li>" +
+                    $"        <li> Cumpleaños.</li>" +
+                    $"        <li> Baby Shower.</li>" +
+                    $"        <li> Grados.</li>" +
+                    $"        <li> Despedidas de Soltero.</li>" +
                     $"      </ul>" +
                     $"  <div style = 'width: 100%;margin:20px 0; display: inline-block;text-align: center'>" +
                     $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = ''>" +
                     $"  </div>" +
                     $"  <div style = 'width: 100%; text-align: center'>" +
                     $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +
-                    $"    To allow the user,plase click in this link:</ br ></ br > " +
+                    $"    To allow the user,plase click in this link: <br/> <br/> " +
                     $"    <a style ='text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db' href = \"{tokenLink}\">Confirm Email</a>" +
-                    $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' > Nuskë Clinica Integral Veterinaria 2019 </p>" +
+                    $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' > Eventos Room L21 2020. </p>" +
                     $"  </div>" +
                     $" </td >" +
                     $"</tr>" +
